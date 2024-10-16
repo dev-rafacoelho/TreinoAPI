@@ -20,7 +20,7 @@ const pool = new Pool({
 app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 
-export const query = (text, params) => pool.query(text, params);
+
 app.post("/users", (req, res) => {
   const { username, password } = req.body;
   const users = [username, password];

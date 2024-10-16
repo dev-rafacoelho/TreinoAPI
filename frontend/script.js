@@ -103,7 +103,7 @@ async function UpdateUser() {
   let nome = document.getElementById("newusername").value;
   let senha = document.getElementById("newpassword").value;
 
-  if (nome === "" && senha === "") {
+  if (nome === "" || senha === "") {
     p.innerHTML = "Preencha o Formulário";
   } else {
     console.log("nome:" + nome);
@@ -125,6 +125,8 @@ async function UpdateUser() {
     }
 
     console.log("Usuário atualizado");
+    const form = document.getElementById("form");
+    form.style.display = "none";
     fetchAndRenderUsers();
   }
 }
@@ -140,13 +142,13 @@ async function deletar(id) {
   fetchAndRenderUsers();
 }
 
-async function CadastroUser() {
+async function CadastroUser(event) {
   event.preventDefault();
   let nome = document.getElementById("username").value;
   let senha = document.getElementById("password").value;
   let p = document.getElementById("escreva");
 
-  if (nome === "" && senha === "") {
+  if (nome === "" || senha === "") {
     p.innerHTML = "Preencha o Formulário";
   } else {
     console.log("nome:" + nome);
@@ -161,8 +163,6 @@ async function CadastroUser() {
         password: senha,
       }),
     });
-    fetchAndRenderUsers();
   }
-
   fetchAndRenderUsers();
 }
