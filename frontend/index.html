@@ -12,8 +12,13 @@
     <button type="submit">SALVAR</button>
     <p id="escreva"></p>
   </form>
-  <button onclick="fetchAndRenderUsers()">Get Users</button>
   <div id="table-container"></div>
+  <form id="form" style="display: none;" onsubmit="UpdateUser()">
+    <p id="p"></p>
+    <input type="text" placeholder="Digite seu usuário" name="newusername" id="newusername">
+    <input type="password" placeholder="Digite sua senha" name="newpassword" id="newpassword">
+    <button type="submit">SALVAR</button>
+  </form>
     <script type="text/javascript" src="./script.js"></script>
 </body>
 </html>

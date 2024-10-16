@@ -49,6 +49,38 @@ app.get("/getusers", (req, res) => {
   });
 });
 
+app.put("/update", (req, res) => {
+  const { username, password, id } = req.body;
+  const users = [username, password, id];
+  pool.query(
+    "UPDATE users SET username = $1, password = $2 WHERE id = $3",
+    users,
+    (err, results) => {
+      if (err) {
+        console.error("Erro ao atualizar chamada:", err);
+        res.status(500).send("Erro interno do servidor");
+      } else {
+        res.send("Chamada atualizada com sucesso");
+      }
+    }
+  );
+});
+
+app.delete("/delete/:id", (req, res) => {
+  const id = [req.params.id];
+  pool.query(
+    "DELETE FROM users WHERE id = $1",
+    id,
+    (err) => {
+      if (err) {
+        console.error("Erro ao deletar chamada:", err);
+        res.status(500).send("Erro interno do servidor");
+      } else {
+        res.send("Chamada deletada com sucesso");
+      }
+    }
+  );
+});
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
